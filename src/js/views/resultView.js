@@ -6,10 +6,13 @@ class ResultView {
 
   render(data) {
     this.#data = data;
-    console.log(data);
+    this.#clearHTML();
     this.#data.map(val => {
       this.#generateHTML(val);
     });
+  }
+  #clearHTML() {
+    this.#parentElement.innerHTML = '';
   }
   #generateHTML(obj) {
     const html = `<li class="preview">
@@ -28,6 +31,7 @@ class ResultView {
       </div>
     </a>
   </li>`;
+
     this.#parentElement.insertAdjacentHTML('afterbegin', html);
   }
 }
